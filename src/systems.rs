@@ -1,4 +1,4 @@
-use bevy::prelude::*;
+use bevy::{app::Events, prelude::*, window::WindowResized};
 
 pub fn spawn_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
     info!("Spawning UI");
@@ -47,4 +47,11 @@ pub fn spawn_sprites(mut commands: Commands, asset_server: Res<AssetServer>, mut
 pub fn spawn_camera(mut commands: Commands) {
     info!("spawning camera");
     commands.spawn_bundle(OrthographicCameraBundle::new_2d());
+}
+
+
+pub fn window(mut window:ResMut<Windows>) {
+    let window = window.get_primary_mut().expect("could not get window");
+    //window.set_resolution(128.0, 128.0);
+    //info!("{:?},{:?}", window.width(), window.height());
 }
