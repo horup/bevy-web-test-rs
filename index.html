@@ -22,26 +22,23 @@
       }
     </style>
   </head>
-  <canvas id="main">
-
-  </canvas>
   <script>
-    let resize = () => {
-      let canvas = document.getElementById("main");
+    let recalculateSize = () => {
+      let canvas = document.getElementsByTagName("canvas")[0];
+      console.log(canvas);
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      canvas.style = `width: ${canvas.width}; height: ${canvas.height}`;
       console.log("hello world2");
     }
 
-    window.onresize = resize;
+    window.onresize = recalculateSize;
+    window.addEventListener("DOMNodeInserted", recalculateSize);
   </script>
   <script type="module">
     import init from './pkg/bevy_web_test.js';
     var res = await init();
     res.start();
-  </script>
-
-  <script>
-    resize();
+    recalculateSize();
   </script>
 </html>
