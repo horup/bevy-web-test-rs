@@ -25,11 +25,11 @@
   <script>
     let recalculateSize = () => {
       let canvas = document.getElementsByTagName("canvas")[0];
-      console.log(canvas);
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      canvas.style = `width: ${canvas.width}; height: ${canvas.height}`;
-      console.log("hello world2");
+      if (canvas != null) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvas.style = `width: ${canvas.width}; height: ${canvas.height}`;
+      }
     }
 
     window.onresize = recalculateSize;

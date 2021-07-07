@@ -35,6 +35,16 @@ pub fn spawn_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
     });
 }
 
-pub fn spawn_sprites(mut commands: Commands, asset_server: Res<AssetServer>) {
-    
+pub fn spawn_sprites(mut commands: Commands, asset_server: Res<AssetServer>, mut materials:ResMut<Assets<ColorMaterial>>) {
+    info!("spawning sprites");
+    let explosion = asset_server.load("explosion.png");
+    commands.spawn_bundle(SpriteBundle {
+        material: materials.add(explosion.into()),
+        ..Default::default()
+    });
+}
+
+pub fn spawn_camera(mut commands: Commands) {
+    info!("spawning camera");
+    commands.spawn_bundle(OrthographicCameraBundle::new_2d());
 }

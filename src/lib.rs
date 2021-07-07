@@ -8,6 +8,7 @@ pub fn all(app: &mut AppBuilder) {
     .add_plugins(DefaultPlugins)
     .add_startup_system(spawn_ui.system())
     .add_startup_system(spawn_sprites.system())
+    .add_startup_system(spawn_camera.system())
     .insert_resource(WindowDescriptor {
         width:1024.,
         height:786.,
