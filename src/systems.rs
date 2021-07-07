@@ -50,13 +50,6 @@ pub fn spawn_camera(mut commands: Commands) {
     commands.spawn_bundle(OrthographicCameraBundle::new_2d());
 }
 
-
-pub fn window(mut window:ResMut<Windows>) {
-    let window = window.get_primary_mut().expect("could not get window");
-    //window.set_resolution(128.0, 128.0);
-    //info!("{:?},{:?}", window.width(), window.height());
-}
-
 pub fn play_music(asset_server: Res<AssetServer>, audio: Res<Audio>) {
     audio.play(asset_server.load("test.ogg"));
 }
