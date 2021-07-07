@@ -1,4 +1,5 @@
 use bevy::{app::Events, prelude::*, window::WindowResized};
+use bevy_kira_audio::Audio;
 
 pub fn spawn_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
     info!("Spawning UI");
@@ -54,4 +55,8 @@ pub fn window(mut window:ResMut<Windows>) {
     let window = window.get_primary_mut().expect("could not get window");
     //window.set_resolution(128.0, 128.0);
     //info!("{:?},{:?}", window.width(), window.height());
+}
+
+pub fn play_music(asset_server: Res<AssetServer>, audio: Res<Audio>) {
+    audio.play(asset_server.load("test.ogg"));
 }

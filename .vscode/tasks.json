@@ -11,7 +11,14 @@
 				"kind": "build",
 				"isDefault": true
 			},
-			"label": "rust: cargo build"
+			"label": "wasm-pack build"
+		},
+		{
+			"type": "cargo",
+			"command": "run",
+			"group": "build",
+			"label": "rust: cargo run"
 		}
+		
 	]
 }

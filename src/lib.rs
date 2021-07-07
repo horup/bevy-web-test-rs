@@ -1,4 +1,5 @@
 use bevy::{prelude::*};
+use bevy_kira_audio::AudioPlugin;
 use wasm_bindgen::prelude::*;
 mod systems;
 pub use systems::*;
@@ -7,6 +8,8 @@ use bevy::window::WindowResized;
 pub fn all(app: &mut AppBuilder) {
     app
     .add_plugins(DefaultPlugins)
+    .add_plugin(AudioPlugin)
+    .add_startup_system(play_music.system())
     .add_startup_system(spawn_ui.system())
     .add_startup_system(spawn_sprites.system())
     .add_startup_system(spawn_camera.system())
