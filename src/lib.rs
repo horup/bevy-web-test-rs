@@ -1,4 +1,4 @@
-use bevy::{prelude::*};
+use bevy::{prelude::*, window::WindowResizeConstraints};
 use bevy_kira_audio::AudioPlugin;
 use wasm_bindgen::prelude::*;
 mod systems;
@@ -17,8 +17,14 @@ pub fn all(app: &mut AppBuilder) {
     .add_startup_system(spawn_sprites.system())
     .add_startup_system(spawn_camera.system())
     .insert_resource(WindowDescriptor {
-        width:1024.,
-        height:786.,
+        width:640.,
+        height:480.,
+        resize_constraints:WindowResizeConstraints {
+            max_width:640.,
+            max_height:480.,
+            min_width:640.,
+            min_height:480.
+        },
         ..Default::default()
     });
 }

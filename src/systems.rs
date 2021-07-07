@@ -1,4 +1,4 @@
-use bevy::{app::Events, prelude::*, window::WindowResized};
+use bevy::prelude::*;
 use bevy_kira_audio::Audio;
 
 pub fn spawn_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
