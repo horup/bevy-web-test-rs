@@ -20,8 +20,8 @@ pub fn all(app: &mut AppBuilder) {
         width:640.,
         height:480.,
         resize_constraints:WindowResizeConstraints {
-            max_width:640.,
-            max_height:480.,
+            max_width:1024.,
+            max_height:768.,
             min_width:640.,
             min_height:480.
         },
