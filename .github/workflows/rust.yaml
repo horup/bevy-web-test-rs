@@ -10,25 +10,21 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
+  build-web:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set current date as env variable
-      run: echo "NOW=$(Get-Date -Format 'yyyy-MM-dd')" >> $env:GITHUB_ENV
     - name: Create Web Release
       run: ./release_web.bat
     - name: Archive Web Release
       uses: actions/upload-artifact@v2
       with:
-        name: ${{github.workflow}}-web-${{env.NOW}}
+        name: release-web
         path: |
           dist-web
 
-
-
   deploy:
-    needs: [build] # The second job must depend on the first one to complete before running, and uses ubuntu-latest instead of windows.
+    needs: [build-web] # The second job must depend on the first one to complete before running, and uses ubuntu-latest instead of windows.
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -37,9 +33,9 @@ jobs:
       - name: Download Artifacts 🔻 # The built project is downloaded into the 'site' folder.
         uses: actions/download-artifact@v1
         with:
-          name: ${{github.workflow}}-web-${{env.NOW}}
+          name: release-web
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages
-          folder: ${{github.workflow}}-web-${{env.NOW}} # The deployment folder should match the name of the artifact. Even though our project builds into the 'build' folder the artifact name of 'site' must be placed here.
+          folder: release-web # The deployment folder should match the name of the artifact. Even though our project builds into the 'build' folder the artifact name of 'site' must be placed here.
