@@ -21,6 +21,11 @@ jobs:
     - name: Archive Web Release
       uses: actions/upload-artifact@v2
       with:
-        name: ${{github.workflow}}-${{env.NOW}}
+        name: ${{github.workflow}}-web-${{env.NOW}}
         path: |
           dist-web
+    - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist-web # The folder the action should deploy.
