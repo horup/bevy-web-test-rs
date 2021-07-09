@@ -20,11 +20,11 @@ jobs:
       run: cargo build --verbose --release
     - name: Run tests
       run: cargo test --verbose
-    - name: Create Release
-      run: ./release.bat
-    - name: Archive non-installer release
+    - name: Create Web Release
+      run: ./release_web.bat
+    - name: Archive Web Release
       uses: actions/upload-artifact@v2
       with:
         name: ${{github.workflow}}-${{env.NOW}}
         path: |
-          dist
+          dist-web
