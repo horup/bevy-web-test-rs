@@ -52,4 +52,5 @@ pub fn spawn_camera(mut commands: Commands) {
 
 pub fn play_music(asset_server: Res<AssetServer>, audio: Res<Audio>) {
     audio.play(asset_server.load("test.ogg"));
+    info!("playing music!")
 }
